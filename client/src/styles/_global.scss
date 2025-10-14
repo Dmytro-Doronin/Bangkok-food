@@ -1,0 +1,99 @@
+@use 'helpers' as *;
+
+
+html {
+  scroll-behavior: smooth;
+  &.is-lock {
+    overflow: hidden;
+  }
+}
+
+body {
+  @include fluid-text(18, 14);
+  transition-duration: 0ms;
+  font-family: var(--font-family-base), sans-serif;
+  color: var(--color-light-100);
+  background-color: var(--color-dark-200);
+}
+
+main {
+  margin-top: rem(35);
+}
+
+.disable-transitions *:hover {
+  transition: none !important;
+}
+
+p, span {
+  font-weight: 300;
+}
+
+a:hover,
+button:hover,
+label:hover,
+input:hover,
+textarea:hover,
+select:hover,
+span:hover,
+*:hover,{
+  transition-duration: var(--transition-duration);
+}
+
+a, button > svg {
+  color: inherit;
+
+  @include hover {
+    color: var(--color-accent);
+    cursor: pointer;
+  }
+
+  &[class] {
+    text-decoration: none;
+  }
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  color: var(--color-light-100);
+  font-weight: 300;
+}
+
+h1, .h1 {
+  @include fluid-text(96, 30);
+}
+
+h2, .h2 {
+  @include fluid-text(44, 24);
+}
+
+h3, .h3 {
+  @include fluid-text(24, 20);
+}
+
+h3, .h4 {
+  @include fluid-text(18, 14);
+}
+
+:focus-visible {
+  outline: rem(2) dashed var(--color-light-100);
+  outline-offset: rem(4);
+  transition-duration: 0s !important;
+}
+
+[js-animation] {
+  @include invisible;
+}
+
+[js-animation].active {
+  @include appear;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: rem(1020);
+  padding: 0 rem(10);
+}

@@ -1,0 +1,272 @@
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+:where(ul, ol):where([class]) {
+  padding-left: 0;
+}
+
+body,
+:where(blockquote, figure):where([class]) {
+  margin: 0;
+}
+
+:where(h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+dl):where([class]) {
+  margin-block: 0;
+}
+
+:where(dd[class]) {
+  margin-left: 0;
+}
+
+:where(fieldset[class]) {
+  margin-left: 0;
+  padding: 0;
+  border: none;
+}
+
+:where(ul[class]) {
+  list-style: none;
+}
+
+:where(address[class]) {
+  font-style: normal;
+}
+
+p {
+  --paragraphMarginBottom: 24px;
+  margin-block: 0;
+}
+
+p:where(:not([class]):not(:last-child)) {
+  margin-bottom: var(--paragraphMarginBottom);
+}
+
+img,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
+html {
+  height: 100%;
+  scrollbar-gutter: stable;
+}
+
+html,
+:has(:target) {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100%;
+  line-height: 1.5;
+}
+
+a:where([class]) {
+  display: inline-flex;
+}
+
+button,
+label {
+  cursor: pointer;
+}
+
+[fill] {
+  fill: currentColor;
+}
+
+[stroke] {
+  stroke: currentColor;
+}
+
+svg * {
+  transition-property: fill, stroke;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+:root {
+  --color-dark-200: #1f1e19;
+  --color-warning-500: #ecd41a;
+  --color-danger-700: #c92086;
+  --color-grey-500: #b6b4a2;
+}
+
+@media (hover: hover) {
+  .skill-card:hover {
+    box-shadow: var(--shadowAfter);
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-main: #111111;
+    --color-light-100: #ffffff;
+  }
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    --color-main: #ececec;
+    --color-light-100: #000000;
+  }
+}
+html {
+  scroll-behavior: smooth;
+}
+html.is-lock {
+  overflow: hidden;
+}
+
+body {
+  font-size: clamp(0.875rem, 0.7944214876rem + 0.3305785124vw, 1.125rem);
+  transition-duration: 0ms;
+  font-family: var(--font-family-base), sans-serif;
+  color: var(--color-light-100);
+  background-color: var(--color-dark-200);
+}
+
+main {
+  margin-top: 2.1875rem;
+}
+
+.disable-transitions *:hover {
+  transition: none !important;
+}
+
+p, span {
+  font-weight: 300;
+}
+
+a:hover,
+button:hover,
+label:hover,
+input:hover,
+textarea:hover,
+select:hover,
+span:hover,
+*:hover {
+  transition-duration: var(--transition-duration);
+}
+
+a, button > svg {
+  color: inherit;
+}
+@media (any-hover: hover) {
+  a:hover, button > svg:hover {
+    color: var(--color-accent);
+    cursor: pointer;
+  }
+}
+@media (any-hover: none) {
+  a:active, button > svg:active {
+    color: var(--color-accent);
+    cursor: pointer;
+  }
+}
+a[class], button > svg[class] {
+  text-decoration: none;
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  color: var(--color-light-100);
+  font-weight: 300;
+}
+
+h1, .h1 {
+  font-size: clamp(1.875rem, 0.5454545455rem + 5.4545454545vw, 6rem);
+}
+
+h2, .h2 {
+  font-size: clamp(1.5rem, 1.097107438rem + 1.652892562vw, 2.75rem);
+}
+
+h3, .h3 {
+  font-size: clamp(1.25rem, 1.1694214876rem + 0.3305785124vw, 1.5rem);
+}
+
+h3, .h4 {
+  font-size: clamp(0.875rem, 0.7944214876rem + 0.3305785124vw, 1.125rem);
+}
+
+:focus-visible {
+  outline: 0.125rem dashed var(--color-light-100);
+  outline-offset: 0.25rem;
+  transition-duration: 0s !important;
+}
+
+[js-animation] {
+  transform: translate(0, 7.5rem);
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+
+[js-animation].active {
+  transform: translate(0, 0);
+  opacity: 1;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 63.75rem;
+  padding: 0 0.625rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0 auto;
+}
+.header__logo {
+  font-size: 2.875rem;
+  line-height: 1.2;
+  color: var(--color-warning-500);
+  text-shadow: 0.1875rem 0.1875rem var(--color-danger-700);
+  margin: 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+.header__subtitle {
+  font-size: 1.3125rem;
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: center;
+  color: var(--color-grey-500);
+  margin: 0;
+}
+
+/*# sourceMappingURL=main.css.map */
