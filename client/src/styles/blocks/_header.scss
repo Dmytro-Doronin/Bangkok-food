@@ -1,17 +1,17 @@
 @use '../helpers' as *;
 
-
 .header {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   margin: 0 auto;
+  margin-bottom: rem(20);
   &__logo {
     font-size: rem(46);
     line-height: 1.2;
-    color: var(--color-warning-500);
-    text-shadow: rem(3) rem(3) var(--color-danger-700);
+    color: var(--color-yellow);
+    text-shadow: rem(3) rem(3) var(--color-pink);
     margin: 0;
     text-align: center;
     text-transform: uppercase;
@@ -22,7 +22,7 @@
     font-weight: 500;
     line-height: 1.2;
     text-align: center;
-    color: var(--color-grey-500);
+    color: var(--color-black-light);
     margin: 0;
   }
 }

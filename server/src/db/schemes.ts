@@ -14,3 +14,4 @@ export const ProductSchema = new mongoose.Schema<WithId<ProductType>>({
     vegetarian: {type: Boolean, required: true },
 })
 export const ProductModel = mongoose.model<WithId<ProductType>>('product', ProductSchema)
+export const RecommendationsModel = mongoose.model<WithId<ProductType>>('recommendations', ProductSchema)

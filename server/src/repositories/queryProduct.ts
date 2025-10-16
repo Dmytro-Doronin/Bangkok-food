@@ -1,6 +1,6 @@
 
 import {ProductInputModel, ProductOutputModel, ProductType} from "../types/productType";
-import {ProductModel} from "../db/schemes";
+import {ProductModel, RecommendationsModel} from "../db/schemes";
 import {buildFilter} from "../utils/sortData";
 import {injectable, inject} from "inversify";
 
@@ -36,6 +36,22 @@ export class ProductQuery {
             }
         } catch (e) {
             throw new Error('Does not get all products')
+        }
+
+    }
+
+    async getRecommendations(): Promise<ProductType[] | null> {
+
+        try {
+            const recommendations: ProductType[] = await RecommendationsModel.find().lean()
+            if (!recommendations) {
+                return null
+            }
+
+            return recommendations
+
+        } catch (e) {
+            throw new Error('Does not get all recommendations')
         }
 
     }

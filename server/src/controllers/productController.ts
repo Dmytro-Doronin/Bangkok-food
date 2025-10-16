@@ -1,6 +1,6 @@
 import {ProductQuery} from "../repositories/queryProduct";
 import {RequestWithQuery, ResponseWithData} from "../types/appTypes";
-import {ProductInputModel, ProductOutputModel} from "../types/productType";
+import {ProductInputModel, ProductOutputModel, ProductType} from "../types/productType";
 import {inject, injectable} from "inversify";
 
 @injectable()
@@ -25,5 +25,15 @@ export class ProductController {
         }
 
         return res.status(200).send(result)
+    }
+
+    async getRecommendationsController(req: RequestWithQuery<unknown>, res: ResponseWithData<ProductType[]>) {
+        const result = await this.productQuery.getRecommendations()
+
+        if (!result || result.length === 0) {
+            return res.status(200).send([])
+        }
+        return res.status(200).send(result)
+
     }
 }

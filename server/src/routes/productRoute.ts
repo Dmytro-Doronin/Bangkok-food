@@ -5,4 +5,6 @@ import {Router} from "express";
 export const productRouter = Router()
 const productControllerInstance = container.get(ProductController)
 
+
 productRouter.get('/', productControllerInstance.getAllProductsController.bind(productControllerInstance))
+productRouter.get('/recommendations', productControllerInstance.getRecommendationsController.bind(productControllerInstance))
