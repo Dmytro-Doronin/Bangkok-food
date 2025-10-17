@@ -2,7 +2,7 @@ export const carouselController = ({carousel, leftArrow, rightArrow, carouselInn
 
     let currentSlideIndex = 0
     let carouselWidth = getSlideWidth()
-
+    updateArrows()
     function getSlideWidth() {
         return slidesElements.length ? carousel.querySelector('.carousel__slide').offsetWidth : 0
     }
