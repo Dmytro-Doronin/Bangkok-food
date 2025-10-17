@@ -261,12 +261,6 @@ h3, .h4 {
 }
 .header__logo {
   font-size: 2.875rem;
-  line-height: 1.2;
-  color: var(--color-yellow);
-  text-shadow: 0.1875rem 0.1875rem var(--color-pink);
-  margin: 0;
-  text-align: center;
-  text-transform: uppercase;
 }
 .header__subtitle {
   font-size: 1.3125rem;
@@ -409,6 +403,110 @@ h3, .h4 {
     top: 0;
     left: 0;
     transform: none;
+  }
+}
+.title {
+  line-height: 1.2;
+  color: var(--color-yellow);
+  text-shadow: 0.1875rem 0.1875rem var(--color-pink);
+  margin: 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.p40 {
+  padding: 2.5rem 0;
+}
+
+.ribbon {
+  margin-bottom: 2.375rem;
+  height: 3.125rem;
+  overflow: hidden;
+  position: relative;
+}
+.ribbon__inner {
+  padding-bottom: 0.9375rem;
+  margin-bottom: -0.9375rem;
+  box-sizing: content-box;
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  scroll-behavior: smooth;
+  overflow-x: auto;
+}
+.ribbon__arrow {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  bottom: 0;
+  width: 7.5rem;
+  outline: none;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: center;
+}
+.ribbon__arrow_left {
+  left: 0;
+  background: linear-gradient(90deg, var(--color-black) 25%, var(--color-black) 61%, rgba(31, 30, 25, 0) 100%);
+  padding-left: 0.875rem;
+}
+.ribbon__arrow_left img {
+  transform: rotate(180deg);
+}
+.ribbon__arrow_right {
+  right: 0;
+  background: linear-gradient(90deg, rgba(31, 30, 25, 0) 25%, var(--color-black) 61%, var(--color-black) 100%);
+  text-align: right;
+  align-items: flex-end;
+  padding-right: 0.875rem;
+}
+.ribbon__arrow_visible {
+  display: flex;
+}
+.ribbon__arrow img {
+  width: 8px;
+}
+.ribbon__arrow:hover img {
+  opacity: 0.8;
+}
+.ribbon__item {
+  color: var(--color-body);
+  background: var(--color-black-dark);
+  padding: 0.8125rem 2.375rem;
+  font-size: 1.3125rem;
+  font-style: italic;
+  line-height: 1.2;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+  border: none;
+  border-left: 1px solid var(--color-black);
+  cursor: pointer;
+}
+.ribbon__item:first-child {
+  border-left: none;
+}
+.ribbon__item_active, .ribbon__item:hover {
+  background-color: var(--color-black-light);
+}
+
+@media all and (max-width: 767px) {
+  .ribbon {
+    margin-bottom: 0;
+  }
+  .ribbon__item {
+    font-size: 1.125rem;
+    padding: 0.8125rem;
+  }
+  .ribbon__arrow {
+    display: none;
+  }
+  .ribbon__arrow.ribbon__arrow_visible {
+    display: none;
   }
 }
 

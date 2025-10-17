@@ -1,0 +1,14 @@
+@use '../helpers' as *;
+
+.title {
+  line-height: 1.2;
+  color: var(--color-yellow);
+  text-shadow: rem(3) rem(3) var(--color-pink);
+  margin: 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.p40 {
+  padding: rem(40) 0;
+}

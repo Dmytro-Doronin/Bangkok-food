@@ -1,0 +1,119 @@
+@use '../helpers' as *;
+
+
+.ribbon {
+  margin-bottom: rem(38);
+  height: rem(50);
+  overflow: hidden;
+  position: relative;
+
+  &__inner {
+    padding-bottom: rem(15);
+    margin-bottom: rem(-15);
+    box-sizing: content-box;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    scroll-behavior: smooth;
+    overflow-x: auto;
+  }
+
+  &__arrow {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    bottom: 0;
+    width: rem(120);
+    outline: none;
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__arrow_left {
+    left: 0;
+    background: linear-gradient(
+      90deg,
+      var(--color-black) 25%,
+      var(--color-black) 61%,
+      rgba(31, 30, 25, 0) 100%
+    );
+    padding-left: rem(14);
+  }
+
+  &__arrow_left img {
+    transform: rotate(180deg);
+  }
+
+  &__arrow_right {
+    right: 0;
+    background: linear-gradient(
+      90deg,
+      rgba(31, 30, 25, 0) 25%,
+      var(--color-black) 61%,
+      var(--color-black) 100%
+    );
+    text-align: right;
+    align-items: flex-end;
+    padding-right: rem(14);
+  }
+
+  &__arrow_visible {
+    display: flex;
+  }
+
+  &__arrow img {
+    width: 8px;
+  }
+
+  &__arrow:hover img {
+    opacity: 0.8;
+  }
+
+  &__item {
+    color: var(--color-body);
+    background: var(--color-black-dark);
+    padding: rem(13) rem(38);
+    font-size: rem(21);
+    font-style: italic;
+    line-height: 1.2;
+    font-weight: 500;
+    text-decoration: none;
+    white-space: nowrap;
+    border: none;
+    border-left: 1px solid var(--color-black);
+    cursor: pointer;
+  }
+
+  &__item:first-child {
+    border-left: none;
+  }
+
+  &__item_active,
+  &__item:hover {
+    background-color: var(--color-black-light);
+  }
+}
+
+@media all and (max-width: 767px) {
+  .ribbon {
+    margin-bottom: 0;
+  }
+
+  .ribbon__item {
+    font-size: rem(18);
+    padding: rem(13);
+  }
+
+  .ribbon__arrow {
+    display: none;
+  }
+
+  .ribbon__arrow.ribbon__arrow_visible {
+    display: none;
+  }
+}
