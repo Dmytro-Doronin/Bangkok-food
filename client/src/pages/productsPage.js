@@ -4,6 +4,8 @@ import {api} from "../api/api.js"
 import {carouselController} from "../controllers/carouselController.js"
 import {RibbonMenu} from "../views/ribbonMenu.js";
 import {ribbonMenuController} from "../controllers/ribbonMenuController.js";
+import {StepSlider} from "../views/stepSlider.js";
+import {StepSliderController} from "../controllers/stepSliderController.js";
 
 export const ProductsPage = async (host) =>{
     const header = HeaderView()
@@ -11,6 +13,8 @@ export const ProductsPage = async (host) =>{
 
     try {
         const [recs, products] = await Promise.all([api.getRecommendations(), api.getProducts()])
+
+        //Carousel
         const {
             carousel,
             carouselInner,
@@ -34,13 +38,14 @@ export const ProductsPage = async (host) =>{
         })
         host.appendChild(carousel)
 
-
+        //Title
         const title = document.createElement('h2')
         title.className = 'title p40'
         title.textContent = 'Our menu'
 
         host.appendChild(title)
 
+        //RibbonMenu
         const {
             ribbonMenu,
             ribbonElements,
@@ -62,10 +67,42 @@ export const ProductsPage = async (host) =>{
         })
 
         host.appendChild(ribbonMenu)
+
+        //Filter group
+        const filterGroupEl = document.createElement('div')
+        filterGroupEl.className = 'filter-group'
+
+        //Step slider
+        const {
+            stepSlider,
+            sliderThumb,
+            sliderValue,
+            progress,
+            value,
+            steps
+        } = StepSlider({
+            value: 0,
+            steps: 5
+        })
+        StepSliderController({
+            stepSlider,
+            sliderThumb,
+            sliderValue,
+            progress,
+            value,
+            steps
+        })
+
+        stepSlider.addEventListener('slider-change', (event) => {
+            console.log(event.detail)
+        })
+
+        filterGroupEl.appendChild(stepSlider)
+        host.appendChild(filterGroupEl)
+
+
     } catch (e) {
         console.error(e)
     }
-
-
 
 }
