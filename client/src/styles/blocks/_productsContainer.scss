@@ -2,7 +2,13 @@
 
 .products-container {
   display: flex;
+  position: relative;
   justify-content: center;
   min-height: rem(300);
   margin-bottom: rem(30);
+
+  &.loading {
+    opacity: 0.1;
+    transition: opacity 0.3s ease;
+  }
 }

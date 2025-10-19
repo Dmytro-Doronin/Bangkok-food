@@ -7,7 +7,6 @@ import {createProductsList} from "../sections/createProductsList.js"
 import {createTitleSection} from "../sections/titleSection.js"
 import {Modal} from "../views/modal.js"
 import {Loader} from "../views/loader.js";
-import {renderLoading} from "../views/loading.js";
 
 export const ProductsPage = async (host) =>{
 
@@ -54,14 +53,18 @@ export const ProductsPage = async (host) =>{
     }
 
     async function fetchProducts() {
+        productsContainer.classList.add('loading')
         try {
-            renderLoading('.products-container', loader)
+            const loader = Loader()
+            productsContainer.appendChild(loader)
             const products = await api.getProducts(state.filters)
             state.products = products.items
             renderProducts()
         } catch (err) {
             state.error = err.message
             renderError()
+        } finally {
+            productsContainer.classList.remove('loading')
         }
     }
 

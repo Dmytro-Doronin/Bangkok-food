@@ -776,12 +776,22 @@ h3, .h4 {
 
 .products-container {
   display: flex;
+  position: relative;
   justify-content: center;
   min-height: 18.75rem;
   margin-bottom: 1.875rem;
 }
+.products-container.loading {
+  opacity: 0.1;
+  transition: opacity 0.3s ease;
+}
 
 .loader-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
   display: flex;
   justify-content: center;
   align-items: center;
