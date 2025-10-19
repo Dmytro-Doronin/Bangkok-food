@@ -777,6 +777,7 @@ h3, .h4 {
 .products-container {
   display: flex;
   justify-content: center;
+  min-height: 18.75rem;
 }
 
 .loader-wrapper {

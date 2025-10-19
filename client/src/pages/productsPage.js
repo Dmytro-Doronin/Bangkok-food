@@ -22,14 +22,13 @@ export const ProductsPage = async (host) =>{
             spiciness: 0,
         },
         recommendations: [],
-        loading: false,
         error: null,
     }
+
     const loader = Loader()
     async function fetchInitialData() {
         let modal
         try {
-            state.loading = true
             modal = Modal(loader)
             host.appendChild(modal)
 
@@ -39,7 +38,6 @@ export const ProductsPage = async (host) =>{
             ])
             state.recommendations = recs
             state.products = products.items
-            state.loading = false
 
             if (modal) {
                 modal.remove()
@@ -57,7 +55,6 @@ export const ProductsPage = async (host) =>{
 
     async function fetchProducts() {
         try {
-            state.loading = true
             renderLoading('.products-container', loader)
             const products = await api.getProducts(state.filters)
             state.products = products.items
