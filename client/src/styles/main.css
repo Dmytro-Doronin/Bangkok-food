@@ -140,6 +140,7 @@ svg * {
   --color-pink: #c92086;
   --color-black-light: #6e6a51;
   --color-black-light-100: #4e4d41;
+  --color-black-light-200: #918f79;
   --color-black-middle: #414036;
   --color-black-middle-100: #3b3a31;
   --color-black-dark: #2d2c25;
@@ -735,8 +736,70 @@ h3, .h4 {
 }
 .product-list {
   display: grid;
+  justify-content: center;
+  align-items: center;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 0.625rem;
+}
+
+.modal {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow-y: auto;
+  display: block;
+}
+.modal__overlay {
+  height: 100%;
+  width: 100%;
+  background-color: var(--color-black-light-200);
+  opacity: 1;
+}
+.modal__inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 994px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.is-modal-open {
+  overflow: hidden;
+}
+
+.products-container {
+  display: flex;
+  justify-content: center;
+}
+
+.loader-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.25rem;
+}
+
+.loader {
+  align-self: center;
+  width: 3.125rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 0.5rem solid;
+  border-color: var(--color-pink) transparent;
+  animation: l1 1s infinite;
+}
+
+@keyframes l1 {
+  to {
+    transform: rotate(0.5turn);
+  }
 }
 
 /*# sourceMappingURL=main.css.map */

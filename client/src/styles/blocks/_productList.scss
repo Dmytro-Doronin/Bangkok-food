@@ -2,6 +2,8 @@
 
 .product-list {
   display: grid;
+  justify-content: center;
+  align-items: center;
   grid-template-columns: 1fr 1fr 1fr;
   gap: rem(10);
 }

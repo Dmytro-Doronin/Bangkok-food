@@ -6,6 +6,11 @@ export const ProductsList = ({products}) => {
         <div class="product-list"></div>
     `)
 
+    if (products.length === 0) {
+        productsList.classList.remove("product-list")
+        productsList.textContent = 'List of products is empty.'
+    }
+
     products.forEach(product => {
         const { card } = ProductCard({ product })
         productsList.appendChild(card)

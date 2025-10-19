@@ -5,6 +5,9 @@ import {createFilterSection} from "../sections/createFilterSection.js"
 import {createRibbonSection} from "../sections/createRibbonSection.js"
 import {createProductsList} from "../sections/createProductsList.js"
 import {createTitleSection} from "../sections/titleSection.js"
+import {Modal} from "../views/modal.js"
+import {Loader} from "../views/loader.js";
+import {renderLoading} from "../views/loading.js";
 
 export const ProductsPage = async (host) =>{
 
@@ -22,11 +25,14 @@ export const ProductsPage = async (host) =>{
         loading: false,
         error: null,
     }
-
+    const loader = Loader()
     async function fetchInitialData() {
+        let modal
         try {
             state.loading = true
-            // renderLoading()
+            modal = Modal(loader)
+            host.appendChild(modal)
+
             const [recs, products] = await Promise.all([
                 api.getRecommendations(),
                 api.getProducts(state.filters),
@@ -34,9 +40,17 @@ export const ProductsPage = async (host) =>{
             state.recommendations = recs
             state.products = products.items
             state.loading = false
+
+            if (modal) {
+                modal.remove()
+            }
+
             renderPage()
         } catch (err) {
             state.error = err.message
+            if (modal) {
+                modal.remove()
+            }
             renderError()
         }
     }
@@ -44,7 +58,7 @@ export const ProductsPage = async (host) =>{
     async function fetchProducts() {
         try {
             state.loading = true
-            renderProductsLoading()
+            renderLoading('.products-container', loader)
             const products = await api.getProducts(state.filters)
             state.products = products.items
             renderProducts()
@@ -54,17 +68,10 @@ export const ProductsPage = async (host) =>{
         }
     }
 
-    // function renderLoading() {
-    //     host.innerHTML = `<div class="loading">Loading...</div>`
-    // }
-
     function renderError() {
         host.innerHTML = `<div class="error">Error: ${state.error}</div>`
     }
 
-    function renderProductsLoading() {
-        document.querySelector('.product-list').innerHTML = `<div>Loading...</div>`
-    }
 
     let productsContainer
 
