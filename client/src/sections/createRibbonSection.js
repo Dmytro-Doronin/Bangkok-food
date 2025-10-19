@@ -18,9 +18,7 @@ export const createRibbonSection = (host) => {
             ribbonInner
         })
 
-        ribbonMenu.addEventListener('ribbon-select', (event) => {
-            console.log(event.detail)
-        })
-
         host.appendChild(ribbonMenu)
+
+    return {ribbonMenu}
 }

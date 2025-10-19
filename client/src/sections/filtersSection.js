@@ -13,8 +13,8 @@ export const FiltersSection = () => {
     const { stepSlider, sliderThumb, sliderValue, progress, value, steps } = StepSlider({ value: 0, steps: 5 })
     filterGroup.appendChild(stepSlider)
 
-    const { filtersCheckbox: nutsCheckbox } = Checkbox({ title: 'No nuts', value: 'nuts' })
-    const { filtersCheckbox: veganCheckbox } = Checkbox({ title: 'Vegetarian only', value: 'vegetarian' })
+    const { filtersCheckbox: nutsCheckbox } = Checkbox({ title: 'Nuts', value: 'nuts' })
+    const { filtersCheckbox: veganCheckbox } = Checkbox({ title: 'Vegetarian only', value: 'vegetarian'})
     filterGroup.appendChild(nutsCheckbox)
     filterGroup.appendChild(veganCheckbox)
 

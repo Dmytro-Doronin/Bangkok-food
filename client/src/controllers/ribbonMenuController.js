@@ -10,6 +10,9 @@ export const ribbonMenuController = ({
     let scrollLeft = 0
     let scrollRight = 0
 
+    const initial = ribbonMenu.querySelector('.ribbon__item[data-id="all"]') || ribbonElements[0]
+    setActiveLink(initial)
+
     function getSliderWidth() {
         scrollLeft = ribbonInner.scrollLeft
 
