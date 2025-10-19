@@ -9,14 +9,13 @@ export class ProductQuery {
     async getAllProductsInDb(sortData: ProductInputModel):Promise<ProductOutputModel | null> {
         const pageNumber = sortData.pageNumber ?? 1
         const pageSize = sortData.pageSize ?? 10
-
         const filter = buildFilter(sortData)
 
         try {
             const products: ProductType[] = await ProductModel
                 .find(filter)
-                .skip((+pageNumber - 1) * +pageSize)
-                .limit(+pageSize)
+                .skip((pageNumber - 1) * +pageSize)
+                .limit(pageSize)
                 .lean()
 
             if (!products) {
@@ -25,12 +24,12 @@ export class ProductQuery {
 
             const totalCount: number = await ProductModel.countDocuments(filter)
 
-            const pagesCount = Math.ceil(totalCount / +pageSize)
+            const pagesCount = Math.ceil(totalCount / pageSize)
 
             return {
                 pagesCount,
-                pageNumber: +pageNumber,
-                pageSize: +pageSize,
+                pageNumber: pageNumber,
+                pageSize: pageSize,
                 totalCount,
                 items: products
             }

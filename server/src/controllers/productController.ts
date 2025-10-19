@@ -2,25 +2,27 @@ import {ProductQuery} from "../repositories/queryProduct";
 import {RequestWithQuery, ResponseWithData} from "../types/appTypes";
 import {ProductInputModel, ProductOutputModel, ProductType} from "../types/productType";
 import {inject, injectable} from "inversify";
+import {getLogger} from "nodemailer/lib/shared";
+import {toBool, toNum} from "../utils/transformSortData";
 
 @injectable()
 export class ProductController {
     constructor(@inject(ProductQuery) protected productQuery: ProductQuery){}
 
-    async getAllProductsController(req: RequestWithQuery<ProductInputModel>, res: ResponseWithData<ProductOutputModel>) {
+    async getAllProductsController(req: RequestWithQuery<ProductInputModel>, res: ResponseWithData<ProductOutputModel | never[]>) {
         const sortData = {
             productType: req.query.productType,
-            spiciness: req.query.spiciness,
-            nuts: req.query.nuts,
-            vegetarian: req.query.vegetarian,
-            pageNumber: req.query.pageNumber,
-            pageSize: req.query.pageSize
+            spiciness: toNum(req.query.spiciness),
+            nuts: toBool(req.query.nuts),
+            vegetarian: toBool(req.query.vegetarian),
+            pageNumber: toNum(req.query.pageNumber),
+            pageSize: toNum(req.query.pageSize)
         }
 
         const result = await this.productQuery.getAllProductsInDb(sortData)
 
         if (!result) {
-            res.sendStatus(404)
+            res.status(404).send([])
             return
         }
 
@@ -31,7 +33,7 @@ export class ProductController {
         const result = await this.productQuery.getRecommendations()
 
         if (!result || result.length === 0) {
-            return res.status(200).send([])
+            return res.status(404).send([])
         }
         return res.status(200).send(result)
 
