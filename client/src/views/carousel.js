@@ -1,6 +1,8 @@
 import createElement from "../lib/createElement.js";
 
 export const CarouselView = (slides = []) => {
+
+
     const innerHtml = slides.length ? slides.map(SlideView).join('') : ''
 
     const carousel = createElement(`

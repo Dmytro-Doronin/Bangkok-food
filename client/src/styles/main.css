@@ -813,5 +813,28 @@ h3, .h4 {
     transform: rotate(0.5turn);
   }
 }
+.error {
+  position: fixed;
+  bottom: 10%;
+  right: 0;
+  transform: translateX(-50%);
+  min-width: 12.5rem;
+  min-height: 3.125rem;
+  padding: 0.625rem;
+  border-radius: 1.25rem;
+  border: 0.0625rem solid var(--color-red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-black-middle-100);
+  z-index: 9999;
+  opacity: 1;
+}
+.error__message {
+  color: var(--color-red);
+}
+.error.fade-out {
+  opacity: 0;
+}
 
 /*# sourceMappingURL=main.css.map */

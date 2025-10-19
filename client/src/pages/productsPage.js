@@ -7,6 +7,7 @@ import {createProductsList} from "../sections/createProductsList.js"
 import {createTitleSection} from "../sections/titleSection.js"
 import {Modal} from "../views/modal.js"
 import {Loader} from "../views/loader.js";
+import {errorController} from "../controllers/errorController.js";
 
 export const ProductsPage = async (host) =>{
 
@@ -31,12 +32,22 @@ export const ProductsPage = async (host) =>{
             modal = Modal(loader)
             host.appendChild(modal)
 
-            const [recs, products] = await Promise.all([
+            const [recs, products] = await Promise.allSettled([
                 api.getRecommendations(),
                 api.getProducts(state.filters),
             ])
-            state.recommendations = recs
-            state.products = products.items
+
+            if (recs.status === "fulfilled") {
+                state.recommendations = recs.value
+            } else {
+                errorController({ message: recs.reason.message || "Failed to load recommendations" })
+            }
+
+            if (products.status === "fulfilled") {
+                state.products = products.value.items
+            } else {
+                errorController({ message: products.reason.message || "Failed to load products" })
+            }
 
             if (modal) {
                 modal.remove()
@@ -48,30 +59,28 @@ export const ProductsPage = async (host) =>{
             if (modal) {
                 modal.remove()
             }
-            renderError()
+            errorController({message: err.message})
         }
     }
+
 
     async function fetchProducts() {
         productsContainer.classList.add('loading')
         try {
-            const loader = Loader()
             productsContainer.appendChild(loader)
             const products = await api.getProducts(state.filters)
             state.products = products.items
             renderProducts()
         } catch (err) {
             state.error = err.message
-            renderError()
+            errorController({message: err.message})
         } finally {
             productsContainer.classList.remove('loading')
+            if (loader.parentElement) {
+                loader.remove()
+            }
         }
     }
-
-    function renderError() {
-        host.innerHTML = `<div class="error">Error: ${state.error}</div>`
-    }
-
 
     let productsContainer
 
@@ -118,6 +127,10 @@ export const ProductsPage = async (host) =>{
 
     function renderProducts() {
         productsContainer.innerHTML = ''
+        if (state.products.length === 0) {
+            productsContainer.textContent = 'No products found.'
+            return
+        }
         createProductsList({ products: state.products, host: productsContainer })
     }
 

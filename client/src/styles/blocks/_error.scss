@@ -1,0 +1,27 @@
+@use '../helpers' as *;
+
+.error {
+  position: fixed;
+  bottom: 10%;
+  right: 0;
+  transform: translateX(-50%);
+  min-width: rem(200);
+  min-height: rem(50);
+  padding: rem(10);
+  border-radius: rem(20);
+  border: rem(1) solid var(--color-red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-black-middle-100);
+  z-index: 9999;
+  opacity: 1;
+
+  &__message {
+    color: var(--color-red);
+  }
+
+  &.fade-out {
+    opacity: 0;
+  }
+}
