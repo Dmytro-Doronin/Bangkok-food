@@ -8,7 +8,7 @@ export function buildFilter(sortData: ProductInputModel): FilterQuery<FilterType
         filter.productType = sortData.productType
     }
 
-    if (sortData.spiciness && sortData.spiciness > 0) {
+    if (sortData.spiciness !== undefined && sortData.spiciness !== null) {
         filter.spiciness = sortData.spiciness
     }
 
