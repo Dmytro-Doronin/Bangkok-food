@@ -2,11 +2,13 @@ import {HeaderView} from "../views/header.js"
 import {CarouselView} from "../views/carousel.js"
 import {api} from "../api/api.js"
 import {carouselController} from "../controllers/carouselController.js"
-import {RibbonMenu} from "../views/ribbonMenu.js";
-import {ribbonMenuController} from "../controllers/ribbonMenuController.js";
-import {StepSlider} from "../views/stepSlider.js";
-import {StepSliderController} from "../controllers/stepSliderController.js";
-import {Checkbox} from "../views/checkbox.js";
+import {RibbonMenu} from "../views/ribbonMenu.js"
+import {ribbonMenuController} from "../controllers/ribbonMenuController.js"
+import {StepSlider} from "../views/stepSlider.js"
+import {StepSliderController} from "../controllers/stepSliderController.js"
+import {Checkbox} from "../views/checkbox.js"
+import {checkboxController} from "../controllers/checkboxController.js"
+import {ProductsList} from "../views/productsList.js"
 
 export const ProductsPage = async (host) =>{
     const header = HeaderView()
@@ -103,15 +105,36 @@ export const ProductsPage = async (host) =>{
         })
 
 
-        const {filtersCheckbox} = Checkbox()
+        const {filtersCheckbox: nutsCheckbox} = Checkbox({title: 'No nuts'})
+        const {filtersCheckbox: veganCheckbox} = Checkbox({title: 'Vegetarian only'})
 
 
         filterGroupEl.appendChild(stepSliderLabel)
         filterGroupEl.appendChild(stepSlider)
-        filterGroupEl.appendChild(filtersCheckbox)
+
+        filterGroupEl.appendChild(nutsCheckbox)
+        filterGroupEl.appendChild(veganCheckbox)
+
+
+        checkboxController({ checkboxElement: nutsCheckbox })
+        checkboxController({ checkboxElement: veganCheckbox })
+
+        nutsCheckbox.addEventListener('checkbox-change', (e) => {
+            console.log(`Nuts checkbox changed: ${e.detail.checked}`)
+        })
+
+        veganCheckbox.addEventListener('checkbox-change', (e) => {
+            console.log(`Vegan checkbox changed: ${e.detail.checked}`)
+        })
+
+        filterGroupEl.addEventListener('filter-change', (e) => {
+            console.log('Chosen filters:', e.detail)
+        })
+
+        const {productsList} = ProductsList({products: products.items})
 
         host.appendChild(filterGroupEl)
-
+        host.appendChild(productsList)
     } catch (e) {
         console.error(e)
     }

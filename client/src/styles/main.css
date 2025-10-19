@@ -139,7 +139,9 @@ svg * {
   --color-red: #d31c34;
   --color-pink: #c92086;
   --color-black-light: #6e6a51;
+  --color-black-light-100: #4e4d41;
   --color-black-middle: #414036;
+  --color-black-middle-100: #3b3a31;
   --color-black-dark: #2d2c25;
   --color-grey: #b6b4a2;
   --color-body: var(--color-white);
@@ -651,6 +653,90 @@ h3, .h4 {
   color: var(--color-grey);
   margin-right: 1.25rem;
   cursor: auto;
+}
+
+.card {
+  height: var(--card-height);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: 0.2s all;
+  cursor: pointer;
+}
+.card:hover, .card:hover .card__body {
+  background-color: var(--color-black-middle-100);
+}
+.card:hover .card__top {
+  background-color: var(--color-black-light-100);
+}
+.card__top {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-color: var(--color-black-middle);
+}
+.card__image {
+  max-width: calc(100% - 100px);
+  width: 100%;
+}
+.card__price {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: inline-block;
+  padding: 0.5rem;
+  min-width: 4.5rem;
+  text-align: center;
+  background-color: var(--color-pink);
+  color: var(--color-body);
+  font-weight: 700;
+  font-size: 1.0625rem;
+  line-height: 1.2;
+}
+.card__body {
+  height: 4.375rem;
+  background-color: var(--color-black-dark);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.card__title {
+  text-align: center;
+  font-weight: 500;
+  font-size: 1.3125rem;
+  font-style: italic;
+  line-height: 1.2;
+  width: 100%;
+}
+.card__button {
+  background-color: var(--color-yellow);
+  width: 4.5rem;
+  flex: 1 0 4.5rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.card__button:hover, .card__button:active {
+  background-color: var(--color-yellow-dark);
+}
+
+@media all and (max-width: 767px) {
+  .card {
+    margin-bottom: 16px;
+    height: auto;
+  }
+}
+.product-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.625rem;
 }
 
 /*# sourceMappingURL=main.css.map */
