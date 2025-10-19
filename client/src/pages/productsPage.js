@@ -17,7 +17,7 @@ export const ProductsPage = async (host) =>{
             productType: 'all',
             vegetarian: false,
             pageNumber: 1,
-            pageSize: 6,
+            pageSize: 18,
             nuts: false,
             spiciness: 0,
         },
