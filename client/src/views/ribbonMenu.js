@@ -3,19 +3,19 @@ import {categories} from "../data.js";
 
 export const RibbonMenu = () => {
     const ribbonMenu = createElement(`
-      <div class="ribbon">
-        <button class="ribbon__arrow ribbon__arrow_left">
-          <img src="/client/public/icons/angle-icon.svg" alt="icon">
-        </button>
-
-        <nav class="ribbon__inner">
-          ${categories.map(ribbon => viewLinks(ribbon)).join('')}
-        </nav>
-
-        <button class="ribbon__arrow ribbon__arrow_right ribbon__arrow_visible">
-          <img src="/client/public/icons/angle-icon.svg" alt="icon">
-        </button>
-      </div>
+        <div class="ribbon">
+            <button class="ribbon__arrow ribbon__arrow_left">
+               <img src="/client/public/icons/angle-icon.svg" alt="icon">
+            </button>
+        
+            <nav class="ribbon__inner">
+                ${categories.map(ribbon => viewLinks(ribbon)).join('')}
+            </nav>
+        
+            <button class="ribbon__arrow ribbon__arrow_right ribbon__arrow_visible">
+                <img src="/client/public/icons/angle-icon.svg" alt="icon">
+            </button>
+        </div>
     `)
 
     const ribbonInner = ribbonMenu.querySelector(`.ribbon__inner`)
