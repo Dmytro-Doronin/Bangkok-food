@@ -6,6 +6,7 @@ import {RibbonMenu} from "../views/ribbonMenu.js";
 import {ribbonMenuController} from "../controllers/ribbonMenuController.js";
 import {StepSlider} from "../views/stepSlider.js";
 import {StepSliderController} from "../controllers/stepSliderController.js";
+import {Checkbox} from "../views/checkbox.js";
 
 export const ProductsPage = async (host) =>{
     const header = HeaderView()
@@ -72,6 +73,10 @@ export const ProductsPage = async (host) =>{
         const filterGroupEl = document.createElement('div')
         filterGroupEl.className = 'filter-group'
 
+        const stepSliderLabel = document.createElement('label')
+        stepSliderLabel.className = 'label'
+        stepSliderLabel.textContent = 'Max spiciness'
+
         //Step slider
         const {
             stepSlider,
@@ -97,9 +102,15 @@ export const ProductsPage = async (host) =>{
             console.log(event.detail)
         })
 
-        filterGroupEl.appendChild(stepSlider)
-        host.appendChild(filterGroupEl)
 
+        const {filtersCheckbox} = Checkbox()
+
+
+        filterGroupEl.appendChild(stepSliderLabel)
+        filterGroupEl.appendChild(stepSlider)
+        filterGroupEl.appendChild(filtersCheckbox)
+
+        host.appendChild(filterGroupEl)
 
     } catch (e) {
         console.error(e)

@@ -1,0 +1,19 @@
+@use '../helpers' as *;
+
+.filter-group {
+  display: flex;
+  height: rem(80);
+  padding: rem(20) rem(34);
+  flex-direction: row;
+  align-items: center;
+  border: rem(2) solid var(--color-black-light);
+  margin-bottom: rem(24);
+}
+
+.label {
+  font-size: rem(18);
+  line-height: 1.2;
+  color: var(--color-grey);
+  margin-right: rem(20);
+  cursor: auto;
+}

@@ -284,7 +284,7 @@ h3, .h4 {
   z-index: 2;
   right: 0;
   bottom: 0;
-  height: 70px;
+  height: 4.375rem;
   background-color: var(--color-black-dark);
   display: flex;
   flex-direction: row;
@@ -296,29 +296,29 @@ h3, .h4 {
   right: 0;
   bottom: 100%;
   display: inline-block;
-  padding: 8px;
-  min-width: 72px;
+  padding: 0.5rem;
+  min-width: 4.5rem;
   text-align: center;
   background-color: var(--color-pink);
   color: var(--color-body);
   font-family: var(--font-primary), sans-serif;
   font-weight: 700;
-  font-size: 17px;
+  font-size: 1.0625rem;
   line-height: 1.2;
 }
 .carousel__title {
   text-align: center;
   font-weight: 500;
-  font-size: 21px;
+  font-size: 1.3125rem;
   font-style: italic;
   line-height: 1.2;
   width: 100%;
-  padding: 0 20px;
+  padding: 0 1.25rem;
 }
 .carousel__button {
   background-color: var(--color-yellow);
-  width: 72px;
-  flex: 1 0 72px;
+  width: 4.5rem;
+  flex: 1 0 4.5rem;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -358,8 +358,8 @@ h3, .h4 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 70px;
-  height: 70px;
+  width: 4.375rem;
+  height: 4.375rem;
 }
 .carousel__arrow_right {
   right: 0;
@@ -368,7 +368,7 @@ h3, .h4 {
   left: 0;
 }
 .carousel__arrow img, .carousel__arrow svg {
-  max-width: 20px;
+  max-width: 1.25rem;
 }
 .carousel__img {
   min-width: 100%;
@@ -381,14 +381,14 @@ h3, .h4 {
 
 @media all and (max-width: 767px) {
   .carousel {
-    padding-bottom: 57px;
+    padding-bottom: 3.5625rem;
   }
   .carousel__caption {
     left: 0;
-    height: 57px;
+    height: 3.5625rem;
   }
   .carousel__arrow {
-    bottom: 57px;
+    bottom: 3.5625rem;
   }
   .carousel__arrow_right img,
   .carousel__arrow_right svg {
@@ -589,6 +589,68 @@ h3, .h4 {
 
 .slider_dragging .slider__thumb {
   cursor: grabbing;
+}
+
+.filters__checkbox {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.styled-checkbox {
+  position: absolute;
+  opacity: 0;
+}
+.styled-checkbox + label {
+  position: relative;
+  cursor: pointer;
+  display: inline-flex;
+  padding: 0;
+  line-height: 1;
+}
+.styled-checkbox + label:before {
+  content: "";
+  display: inline-block;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-right: 0.75rem;
+  box-sizing: border-box;
+  background: var(--color-black-dark);
+  border: 2px solid #8d8a73;
+  border-radius: 0.125rem;
+  transition: background-color 0.2s, border-color 0.2s, opacity 0.2s;
+}
+.styled-checkbox:checked + label::before {
+  background-image: url("/client/public/icons/check-icon.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 0.875rem 0.875rem;
+}
+.styled-checkbox + label span {
+  vertical-align: middle;
+}
+
+.filters__label {
+  font-size: 1.125rem;
+  line-height: 1.2;
+}
+
+.filter-group {
+  display: flex;
+  height: 5rem;
+  padding: 1.25rem 2.125rem;
+  flex-direction: row;
+  align-items: center;
+  border: 0.125rem solid var(--color-black-light);
+  margin-bottom: 1.5rem;
+}
+
+.label {
+  font-size: 1.125rem;
+  line-height: 1.2;
+  color: var(--color-grey);
+  margin-right: 1.25rem;
+  cursor: auto;
 }
 
 /*# sourceMappingURL=main.css.map */

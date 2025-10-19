@@ -1,0 +1,49 @@
+@use '../helpers' as *;
+
+.filters__checkbox {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.styled-checkbox {
+  position: absolute;
+  opacity: 0;
+
+  & + label {
+    position: relative;
+    cursor: pointer;
+    display: inline-flex;
+    padding: 0;
+    line-height: 1;
+  }
+
+  & + label:before {
+    content: "";
+    display: inline-block;
+    width: rem(20);
+    height: rem(20);
+    margin-right: rem(12);
+    box-sizing: border-box;
+    background: var(--color-black-dark);
+    border: 2px solid #8d8a73;
+    border-radius: rem(2);
+    transition: background-color .2s, border-color .2s, opacity .2s;
+  }
+
+  &:checked + label::before {
+    background-image: url('/client/public/icons/check-icon.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: rem(14) rem(14);
+  }
+
+  & + label span {
+    vertical-align: middle;
+  }
+}
+
+.filters__label {
+  font-size: rem(18);
+  line-height: 1.2;
+}
