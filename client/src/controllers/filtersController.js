@@ -2,7 +2,6 @@ import { checkboxController } from './checkboxController.js'
 import { StepSliderController } from './stepSliderController.js'
 
 export const filtersController = ({
-    filterGroup,
     stepSlider,
     sliderThumb,
     sliderValue,
@@ -22,12 +21,4 @@ export const filtersController = ({
     })
     checkboxController({ checkboxElement: nutsCheckbox })
     checkboxController({ checkboxElement: veganCheckbox })
-
-    filterGroup.addEventListener('checkbox-change', (e) => {
-        console.log(e.detail)
-    })
-
-    filterGroup.addEventListener('slider-change', (e) => {
-        console.log(e.detail)
-    })
 }

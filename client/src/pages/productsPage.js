@@ -156,10 +156,12 @@ export const ProductsPage = async (host) =>{
     const state = {
         products: [],
         filters: {
+            productType: null,
+            vegetarian: false,
+            pageNumber: 1,
+            pageSize: 6,
             nuts: false,
-            vegan: false,
             spiciness: 0,
-            category: null,
         },
         recommendations: [],
         loading: false,
@@ -209,9 +211,7 @@ export const ProductsPage = async (host) =>{
         document.querySelector('.product-list').innerHTML = `<div>Loading...</div>`
     }
 
-    function renderProducts() {
-        createProductsList({ products: state.products, host })
-    }
+    let productsContainer
 
     function renderPage() {
         const header = HeaderView()
@@ -225,8 +225,16 @@ export const ProductsPage = async (host) =>{
 
         const filterGroup = createFilterSection(host)
         filterGroup.addEventListener('checkbox-change', (e) => {
-            if (e.detail.value.includes('nuts')) state.filters.nuts = e.detail.checked
-            if (e.detail.value.includes('vegetarian')) state.filters.vegan = e.detail.checked
+            const { value, checked } = e.detail
+
+            if (value === 'nuts') {
+                state.filters.nuts = checked
+            } 
+            if (value === 'vegetarian') {
+                state.filters.vegetarian = checked
+            }
+
+            console.log('Updated filters:', state.filters)
             fetchProducts()
         })
 
@@ -235,7 +243,16 @@ export const ProductsPage = async (host) =>{
             fetchProducts()
         })
 
-        createProductsList({ products: state.products, host })
+        productsContainer = document.createElement('div')
+        productsContainer.className = 'products-container'
+        host.appendChild(productsContainer)
+
+        renderProducts()
+    }
+
+    function renderProducts() {
+        productsContainer.innerHTML = ''
+        createProductsList({ products: state.products, host: productsContainer })
     }
 
     await fetchInitialData()
