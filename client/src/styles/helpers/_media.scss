@@ -53,17 +53,6 @@ $mobile-s: 480.98;
   }
 }
 
-@media (hover: hover) {
-  .skill-card:hover {
-    box-shadow: var(--shadowAfter);
-  }
-}
-
-@mixin appear {
-  transform: translate(0, 0);
-  opacity: 1;
-}
-
 @mixin hover($hasActiveEffectOnMobile: true) {
   @media (any-hover: hover) {
     &:hover {
@@ -77,19 +66,5 @@ $mobile-s: 480.98;
         @content;
       }
     }
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-main: #111111;
-    --color-light-100: #ffffff;
-  }
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    --color-main: #ececec;
-    --color-light-100: #000000;
   }
 }

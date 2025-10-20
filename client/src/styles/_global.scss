@@ -9,7 +9,7 @@ body {
   @include fluid-text(18, 14);
   transition-duration: 0ms;
   font-family: var(--font-family-base), sans-serif;
-  color: var(--color-light-100);
+  color: var(--color-white);
   background-color: var(--color-black);
 }
 
@@ -79,14 +79,6 @@ h3, .h4 {
   outline: rem(2) dashed var(--color-light-100);
   outline-offset: rem(4);
   transition-duration: 0s !important;
-}
-
-[js-animation] {
-  @include invisible;
-}
-
-[js-animation].active {
-  @include appear;
 }
 
 .container {

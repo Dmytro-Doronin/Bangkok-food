@@ -5,6 +5,14 @@
   height: var(--carousel-height);
   position: relative;
   overflow: hidden;
+  @include tablet {
+    height: rem(200);
+  }
+
+  @include mobile-s {
+    height: rem(180);
+  }
+
 
   &__caption {
     position: absolute;
@@ -17,6 +25,9 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    @include mobile {
+      height: rem(50);
+    }
   }
 
   &__price {
@@ -95,6 +106,11 @@
     justify-content: center;
     width: rem(70);
     height: rem(70);
+    @include tablet {
+      width: rem(50);
+      height: rem(50);
+      top: 30%;
+    }
   }
 
   &__arrow_right {
@@ -119,38 +135,4 @@
     transform: translate(-50%, -50%);
   }
 
-}
-
-@media all and (max-width: 767px) {
-  .carousel {
-    padding-bottom: rem(57);
-  }
-
-  .carousel__caption {
-    left: 0;
-    height: rem(57);
-  }
-
-  .carousel__arrow {
-    bottom: rem(57);
-  }
-
-  .carousel__arrow_right img,
-  .carousel__arrow_right svg {
-    margin-top: 0;
-  }
-
-  .carousel__arrow_left img,
-  .carousel__arrow_left svg {
-    margin-bottom: 0;
-  }
-}
-
-@media (max-width: 992px) {
-  .carousel__img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: none;
-  }
 }

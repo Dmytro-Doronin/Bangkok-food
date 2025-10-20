@@ -1,13 +1,16 @@
 @use '../helpers' as *;
 
 .card {
-  height: var(--card-height);
   display: flex;
   flex-direction: column;
   position: relative;
   transition: 0.2s all;
   cursor: pointer;
-
+  margin-bottom: 16px;
+  height: auto;
+  @include mobile-s {
+    height: rem(200);
+  }
   &:hover,
   &:hover .card__body {
     background-color: var(--color-black-middle-100);
@@ -63,6 +66,9 @@
     font-style: italic;
     line-height: 1.2;
     width: 100%;
+    @include mobile {
+      font-size: rem(18);
+    }
   }
 }
 
@@ -76,7 +82,10 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-
+  @include mobile {
+    width: rem(50);
+    height: rem(50);
+  }
   &:hover,
   &:active {
     background-color: var(--color-yellow-dark);

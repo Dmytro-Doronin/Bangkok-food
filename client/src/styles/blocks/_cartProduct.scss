@@ -4,11 +4,11 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-bottom: 8px;
+  margin-bottom: rem(8);
   background-color: var(--color-black-dark);
 
   &__img {
-    max-width: 92px;
+    max-width: rem(150);
     overflow: hidden;
     background-color: var(--color-black-middle);
     display: flex;
@@ -32,46 +32,46 @@
   }
 
   &__title {
-    padding: 24px;
+    padding: rem(24);
     font-weight: 500;
-    font-size: 21px;
+    font-size: rem(28);
     line-height: 1.5;
     color: var(--color-body);
     white-space: normal;
     flex-grow: 1;
     display: flex;
     align-items: center;
+    @include mobile {
+      font-size: rem(19);
+    }
   }
 
   &__price-wrap {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    width: 260px;
-  }
-
-  &__count {
-    display: inline-block;
-    padding: 0 14px;
-    font-weight: 500;
-    font-size: 21px;
-    line-height: 1.2;
-    color: var(--color-body);
+    width: rem(260);
+    @include mobile {
+      width: auto;
+    }
   }
 
   &__price {
-    max-width: 135px;
+    max-width: rem(135);
     width: 100%;
     text-align: right;
     font-weight: 500;
-    font-size: 21px;
+    font-size: rem(28);
     line-height: 1.2;
     color: var(--color-yellow);
-    padding: 24px;
+    padding: rem(24);
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     justify-content: center;
+    @include mobile {
+      font-size: rem(21);
+    }
   }
 
 }
@@ -81,13 +81,28 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  max-width: 125px;
-  padding: 24px;
+  padding: rem(24);
+
+  &__count {
+    display: inline-block;
+    padding: 0 14px;
+    font-weight: 500;
+    font-size: rem(25);
+    line-height: 1.2;
+    color: var(--color-body);
+  }
 
   &__button {
     cursor: pointer;
-    display: inline-block;
-    max-width: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: rem(50);
+    height: rem(50);
+    @include mobile {
+      width: rem(30);
+      height: rem(30);
+    }
   }
 }
 

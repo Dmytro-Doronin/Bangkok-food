@@ -10,7 +10,13 @@
   height: rem(63);
   text-decoration: none;
   transition: all 0.5s ease;
-
+  z-index: 99999;
+  @include mobile {
+    font-size: rem(26);
+    width: rem(47);
+    height: rem(53);
+    right: 5%;
+  }
   &__wrapper {
     position: relative;
     background: url('/client/public/icons/cart-icon.svg') center no-repeat;

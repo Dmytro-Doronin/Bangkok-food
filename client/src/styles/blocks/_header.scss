@@ -9,6 +9,14 @@
   margin-bottom: rem(20);
   &__logo {
     font-size: rem(46);
+
+    @include tablet {
+      font-size: rem(36);
+    }
+
+    @include mobile-s {
+      font-size: rem(26);
+    }
   }
   &__subtitle {
     font-size: rem(21);
@@ -18,5 +26,14 @@
     text-align: center;
     color: var(--color-black-light);
     margin: 0;
+
+    @include tablet {
+      font-size: rem(18);
+    }
+
+    @include mobile-s {
+      font-size: rem(16);
+    }
   }
+
 }

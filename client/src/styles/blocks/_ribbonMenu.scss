@@ -6,6 +6,9 @@
   height: rem(50);
   overflow: hidden;
   position: relative;
+  @include mobile {
+    height: rem(40);
+  }
 
   &__inner {
     padding-bottom: rem(15);
@@ -87,6 +90,10 @@
     border: none;
     border-left: 1px solid var(--color-black);
     cursor: pointer;
+    @include mobile {
+      font-size: rem(14);
+      line-height: 1.1;
+    }
   }
 
   &__item:first-child {
@@ -96,24 +103,5 @@
   &__item_active,
   &__item:hover {
     background-color: var(--color-black-light);
-  }
-}
-
-@media all and (max-width: 767px) {
-  .ribbon {
-    margin-bottom: 0;
-  }
-
-  .ribbon__item {
-    font-size: rem(18);
-    padding: rem(13);
-  }
-
-  .ribbon__arrow {
-    display: none;
-  }
-
-  .ribbon__arrow.ribbon__arrow_visible {
-    display: none;
   }
 }
