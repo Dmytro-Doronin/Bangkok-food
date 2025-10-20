@@ -3,6 +3,7 @@ import {ProductInputModel, ProductOutputModel, ProductType} from "../types/produ
 import {ProductModel, RecommendationsModel} from "../db/schemes";
 import {buildFilter} from "../utils/sortData";
 import {injectable, inject} from "inversify";
+import {productMapper} from "../utils/mapper";
 
 @injectable()
 export class ProductQuery {
@@ -12,7 +13,7 @@ export class ProductQuery {
         const filter = buildFilter(sortData)
 
         try {
-            const products: ProductType[] = await ProductModel
+            const products = await ProductModel
                 .find(filter)
                 .skip((pageNumber - 1) * +pageSize)
                 .limit(pageSize)
@@ -31,7 +32,7 @@ export class ProductQuery {
                 pageNumber: pageNumber,
                 pageSize: pageSize,
                 totalCount,
-                items: products
+                items: products.map(productMapper)
             }
         } catch (e) {
             throw new Error('Does not get all products')
@@ -42,15 +43,31 @@ export class ProductQuery {
     async getRecommendations(): Promise<ProductType[] | null> {
 
         try {
-            const recommendations: ProductType[] = await RecommendationsModel.find().lean()
+            const recommendations  = await RecommendationsModel.find().lean()
             if (!recommendations) {
                 return null
             }
 
-            return recommendations
+            return recommendations.map(productMapper)
 
         } catch (e) {
             throw new Error('Does not get all recommendations')
+        }
+    }
+
+    async getProduct(id: string): Promise<ProductType | null> {
+
+        try {
+            const product = await ProductModel.findOne({id}).lean()
+
+            if (!product) {
+                return null
+            }
+
+            return productMapper(product)
+
+        } catch (e) {
+            throw new Error('Does not get product')
         }
 
     }

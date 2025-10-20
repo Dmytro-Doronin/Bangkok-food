@@ -1,5 +1,5 @@
 import {ProductQuery} from "../repositories/queryProduct";
-import {RequestWithQuery, ResponseWithData} from "../types/appTypes";
+import {RequestWithParams, RequestWithQuery, ResponseWithData} from "../types/appTypes";
 import {ProductInputModel, ProductOutputModel, ProductType} from "../types/productType";
 import {inject, injectable} from "inversify";
 import {getLogger} from "nodemailer/lib/shared";
@@ -34,6 +34,16 @@ export class ProductController {
 
         if (!result || result.length === 0) {
             return res.status(404).send([])
+        }
+        return res.status(200).send(result)
+    }
+
+    async getProductByIdController(req: RequestWithParams<{id: string}>, res: ResponseWithData<ProductType>) {
+        const id = req.params.id
+        const result = await this.productQuery.getProduct(id)
+
+        if (!result) {
+            return res.sendStatus(404)
         }
         return res.status(200).send(result)
 
