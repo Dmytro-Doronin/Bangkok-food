@@ -1,0 +1,106 @@
+@use '../helpers' as *;
+
+.cart-form {
+  padding: rem(20) rem(27) rem(32);
+  background-color: var(--color-black-dark);
+
+  &__title {
+    font-size: rem(21);
+    line-height: 1.2;
+    font-weight: 700;
+    font-style: italic;
+    margin: 0 0 25px;
+    text-align: center;
+  }
+
+  &__group,
+  &__group_row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: rem(6);
+  }
+
+  &__input {
+    height: rem(48);
+    border: none;
+    box-shadow: none;
+    outline: none;
+    background-color: var(--color-white);
+    padding: rem(11) rem(16);
+    color: var(--color-black);
+    font-style: italic;
+    font-size: rem(21);
+    line-height: 1.2;
+    font-weight: 500;
+    width: 100%;
+    transition: 0.2s box-shadow;
+  }
+
+  &__group {
+    margin-top: rem(16);
+  }
+
+}
+
+.cart-buttons {
+  padding: rem(48) rem(80) 0;
+  text-align: center;
+
+  &__info {
+    padding: rem(11) rem(14) rem(13);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-pink);
+  }
+
+  &__info-text {
+    font-weight: 500;
+    font-size: rem(11);
+    text-transform: uppercase;
+  }
+
+  &__info-price {
+    font-size: rem(20);
+    line-height: 1.2;
+    font-weight: 500;
+  }
+
+  &__button {
+    position: relative;
+    padding-right: rem(54) !important;
+  }
+  &__button:after {
+    content: "";
+    position: absolute;
+    right: rem(24);
+    top: 50%;
+    transform: translate(0, -50%);
+    background: url('/client/public/icons/angle-sm-icon.svg') center no-repeat;
+    background-size: cover;
+    width: 10px;
+    height: 18px;
+  }
+}
+
+.button {
+  height: rem(64);
+  padding: rem(19) rem(24);
+  background-color: var(--color-yellow);
+  font-style: italic;
+  font-weight: 600;
+  font-size: rem(20);
+  line-height: 1.2;
+  color: var(--color-black);
+  display: inline-block;
+  transition: 0.2s all;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.btn-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
