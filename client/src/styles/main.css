@@ -259,6 +259,10 @@ button {
   background-color: transparent;
 }
 
+.back-button {
+  margin-bottom: 1.25rem;
+}
+
 .header {
   display: flex;
   align-items: center;

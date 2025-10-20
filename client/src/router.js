@@ -30,6 +30,10 @@ export function router() {
     const cartElement = Cart()
     root.appendChild(cartElement)
 
+    cartElement.addEventListener("click", () => {
+        navigate(`${ROUTES.cart}`)
+    })
+
     if (hash === ROUTES.products) {
         ProductsPage(root, cartElement)
         return

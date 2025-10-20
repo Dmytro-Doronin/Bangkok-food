@@ -24,7 +24,6 @@ export function CartPage(host, cartElement) {
             const cart = getCart()
             const order = { ...data, items: Object.values(cart) }
 
-
             alert("Order submitted!")
         },
     })

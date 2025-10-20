@@ -1,5 +1,12 @@
 export const cartListController = ({ cartList }) => {
     cartList.addEventListener("click", e => {
+
+        const backButton = e.target.closest('.back-button')
+        if (backButton) {
+            window.history.back()
+            return
+        }
+
         const element = e.target.closest(".cart-product")
 
         if (!element || !cartList.contains(element)) {

@@ -84,10 +84,6 @@ export const ProductsPage = async (host, cartElement) =>{
     let productsContainer
     function renderPage() {
 
-        cartElement.addEventListener("click", () => {
-            navigate(`${ROUTES.cart}`)
-        })
-
         updateCartElement(cartElement)
 
         const {carousel} = createCarouselSection({ recs: state.recommendations, host })

@@ -3,7 +3,11 @@ import {CartProduct} from "./cartProduct.js"
 
 export const cartProductsList = ({products}) => {
     const cartList = createElement(`
-        <div class="cart-list"></div>
+        <div class="cart-list">
+            <button type="button" class="back-button">
+                ← Back
+            </button>
+        </div>
     `)
 
     Object.values(products).forEach(product => {

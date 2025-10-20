@@ -4,6 +4,7 @@ import {Modal} from "../views/modal.js"
 import {Loader} from "../views/loader.js"
 import {createProductSection} from "../sections/createProductSection.js"
 import {updateCartElement} from "../utils/updateCart.js"
+import {addToCart} from "../utils/cartLocalStorage.js"
 
 export const ProductPage = async ({host, cartElement,cardId}) => {
     updateCartElement(cartElement)
@@ -16,7 +17,8 @@ export const ProductPage = async ({host, cartElement,cardId}) => {
             const product = await api.getProduct(cardId)
             const {productElement} = createProductSection({product, host})
             productElement.addEventListener('add-product-from-page', (e) => {
-                console.log(e.detail.id)
+                addToCart(product)
+                updateCartElement(cartElement)
             })
         } catch (err) {
             if (modal) {
