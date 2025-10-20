@@ -9,6 +9,8 @@ import {Modal} from "../views/modal.js"
 import {Loader} from "../views/loader.js"
 import {errorController} from "../controllers/errorController.js"
 import {navigate, ROUTES} from "../router.js"
+import {Cart} from "../views/cart.js"
+import {addToCart} from "../utils/cartLocalStorage.js"
 
 export const ProductsPage = async (host) =>{
 
@@ -89,6 +91,9 @@ export const ProductsPage = async (host) =>{
         const header = HeaderView()
         host.appendChild(header)
 
+        const {cart} = Cart()
+        host.appendChild(cart)
+
         createCarouselSection({ recs: state.recommendations, host })
         createTitleSection({title: 'Our menu', host})
 
@@ -140,7 +145,10 @@ export const ProductsPage = async (host) =>{
 
         productsList.addEventListener('add-product', e => {
             const id = e.detail.id
-            console.log(id)
+            const product = state.products.find(product => product.id === id)
+            addToCart(product)
+            const {cart} = Cart()
+            host.appendChild(cart)
         })
     }
 

@@ -15,7 +15,7 @@ export const ProductView = ({product}) => {
                 <div class="product__vegetarian">Vegetarian: ${product.vegetarian ? 'Yes' : 'No'}</div>
             </div>
             <button type="button" class="add-button">
-                    <img src="/client/public/icons/plus-icon.svg" alt="icon">
+                <img src="/client/public/icons/plus-icon.svg" alt="icon">
             </button>
         </div>
     `)

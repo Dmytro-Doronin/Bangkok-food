@@ -8,7 +8,7 @@ export const productListController = ({ productsList }) => {
 
         const productId = element.dataset.id
 
-        const addButton = e.target.closest(".card__button")
+        const addButton = e.target.closest(".add-button")
         if (addButton) {
             const addEvent = new CustomEvent('add-product', {
                 detail: {id: productId},
