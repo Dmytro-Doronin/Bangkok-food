@@ -1,3 +1,9 @@
+import {HeaderView} from "../views/header.js"
+
 export function ProductPage(host, {cardId}) {
-    console.log('[ProductPage]', cardId)
+    const header = HeaderView()
+    host.appendChild(header)
+
+
+
 }

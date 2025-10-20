@@ -25,4 +25,14 @@ export async function getProducts(filters = {}) {
     return res.json()
 }
 
+export async function getProduct(productId) {
+    const res = await fetch(`${baseUrl}/${productId}`)
+
+    if (!res.ok) {
+        throw new Error(`Failed to load product ${productId} status ${res.status}`)
+    }
+    return res.json()
+
+}
+
 export const api = { getRecommendations, getProducts };
