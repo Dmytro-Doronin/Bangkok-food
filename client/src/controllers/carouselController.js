@@ -36,7 +36,7 @@ export const carouselController = ({carousel, leftArrow, rightArrow, carouselInn
         const slide = event.target.closest('.carousel__slide')
         const id = slide.dataset.id
         const customEvent = new CustomEvent("product-add", {
-            detail: id,
+            detail: {id},
             bubbles: true
         })
         carousel.dispatchEvent(customEvent)

@@ -1,17 +1,19 @@
 
-import {ProductPage} from "./pages/productPage.js";
-import {ProductsPage} from "./pages/productsPage.js";
-import {CartPage} from "./pages/cartPage.js";
+import {ProductPage} from "./pages/productPage.js"
+import {ProductsPage} from "./pages/productsPage.js"
+import {CartPage} from "./pages/cartPage.js"
+import {HeaderView} from "./views/header.js"
+import {Cart} from "./views/cart.js"
 
 
-const root = document.getElementById("app");
+const root = document.getElementById("app")
 
 
 export const ROUTES = {
     products: "#/products",
     cart: "#/cart",
     product: "#/product/",
-};
+}
 
 export function navigate(path) {
     location.hash = path
@@ -22,8 +24,14 @@ export function router() {
 
     root.innerHTML = ""
 
+    const header = HeaderView()
+    root.appendChild(header)
+
+    const cartElement = Cart()
+    root.appendChild(cartElement)
+
     if (hash === ROUTES.products) {
-        ProductsPage(root)
+        ProductsPage(root, cartElement)
         return
     }
 
@@ -34,7 +42,7 @@ export function router() {
 
     if (hash.startsWith(ROUTES.product)) {
         const [, , cardId] = hash.split('/')
-        ProductPage(root, { cardId })
+        ProductPage({host: root, cartElement, cardId})
         return
     }
 

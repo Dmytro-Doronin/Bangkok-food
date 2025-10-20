@@ -1,14 +1,12 @@
-import {HeaderView} from "../views/header.js"
 import {api} from "../api/api.js"
 import {errorController} from "../controllers/errorController.js"
 import {Modal} from "../views/modal.js"
 import {Loader} from "../views/loader.js"
 import {createProductSection} from "../sections/createProductSection.js"
+import {updateCartElement} from "../utils/updateCart.js"
 
-export const ProductPage = async (host, {cardId}) => {
-    const header = HeaderView()
-    host.appendChild(header)
-
+export const ProductPage = async ({host, cartElement,cardId}) => {
+    updateCartElement(cartElement)
     const loader = Loader()
     async function fetchProduct() {
         let modal

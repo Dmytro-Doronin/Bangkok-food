@@ -1,4 +1,3 @@
-import {HeaderView} from "../views/header.js"
 import {api} from "../api/api.js"
 import {createCarouselSection} from "../sections/carouselSection.js"
 import {createFilterSection} from "../sections/createFilterSection.js"
@@ -9,10 +8,10 @@ import {Modal} from "../views/modal.js"
 import {Loader} from "../views/loader.js"
 import {errorController} from "../controllers/errorController.js"
 import {navigate, ROUTES} from "../router.js"
-import {Cart} from "../views/cart.js"
-import {addToCart} from "../utils/cartLocalStorage.js"
+import {updateCartElement} from "../utils/updateCart.js"
+import {addProductToCart} from "../utils/addProductToCart.js"
 
-export const ProductsPage = async (host) =>{
+export const ProductsPage = async (host, cartElement) =>{
 
     const state = {
         products: [],
@@ -25,7 +24,6 @@ export const ProductsPage = async (host) =>{
             spiciness: 0,
         },
         recommendations: [],
-        error: null,
     }
 
     const loader = Loader()
@@ -58,7 +56,6 @@ export const ProductsPage = async (host) =>{
 
             renderPage()
         } catch (err) {
-            state.error = err.message
             if (modal) {
                 modal.remove()
             }
@@ -75,7 +72,6 @@ export const ProductsPage = async (host) =>{
             state.products = products.items
             renderProducts()
         } catch (err) {
-            state.error = err.message
             errorController({message: err.message})
         } finally {
             productsContainer.classList.remove('loading')
@@ -86,15 +82,19 @@ export const ProductsPage = async (host) =>{
     }
 
     let productsContainer
-
     function renderPage() {
-        const header = HeaderView()
-        host.appendChild(header)
 
-        const {cart} = Cart()
-        host.appendChild(cart)
+        cartElement.addEventListener("click", () => {
+            navigate(`${ROUTES.cart}`)
+        })
 
-        createCarouselSection({ recs: state.recommendations, host })
+        updateCartElement(cartElement)
+
+        const {carousel} = createCarouselSection({ recs: state.recommendations, host })
+        carousel.addEventListener("product-add", e => {
+            const id = e.detail.id
+            addProductToCart({cartElement, products: state.recommendations, id})
+        })
         createTitleSection({title: 'Our menu', host})
 
         const {ribbonMenu} = createRibbonSection(host)
@@ -145,10 +145,7 @@ export const ProductsPage = async (host) =>{
 
         productsList.addEventListener('add-product', e => {
             const id = e.detail.id
-            const product = state.products.find(product => product.id === id)
-            addToCart(product)
-            const {cart} = Cart()
-            host.appendChild(cart)
+            addProductToCart({cartElement, products: state.products, id})
         })
     }
 
