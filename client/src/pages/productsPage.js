@@ -6,8 +6,9 @@ import {createRibbonSection} from "../sections/createRibbonSection.js"
 import {createProductsList} from "../sections/createProductsList.js"
 import {createTitleSection} from "../sections/titleSection.js"
 import {Modal} from "../views/modal.js"
-import {Loader} from "../views/loader.js";
-import {errorController} from "../controllers/errorController.js";
+import {Loader} from "../views/loader.js"
+import {errorController} from "../controllers/errorController.js"
+import {navigate, ROUTES} from "../router.js"
 
 export const ProductsPage = async (host) =>{
 
@@ -131,7 +132,16 @@ export const ProductsPage = async (host) =>{
             productsContainer.textContent = 'No products found.'
             return
         }
-        createProductsList({ products: state.products, host: productsContainer })
+        const {productsList} = createProductsList({ products: state.products, host: productsContainer })
+        productsList.addEventListener('product-card-click', e => {
+            const id = e.detail.id
+            navigate(`${ROUTES.product}${id}`)
+        })
+
+        productsList.addEventListener('add-product', e => {
+            const id = e.detail.id
+            console.log(id)
+        })
     }
 
     await fetchInitialData()

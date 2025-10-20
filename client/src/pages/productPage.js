@@ -1,3 +1,3 @@
-export function ProductPage(host, {productId}) {
-
+export function ProductPage(host, {cardId}) {
+    console.log('[ProductPage]', cardId)
 }

@@ -2,7 +2,7 @@ import createElement from "../lib/createElement.js"
 
 export const ProductCard = ({product}) => {
     const card = createElement(`
-        <div class="card">
+        <div class="card" data-id="${product.id}">
             <div class="card__top">
                 <img src="${product.image}" class="card__image" alt="${product.title}">
                 <span class="card__price">€${product.price.toFixed(2)}</span>
