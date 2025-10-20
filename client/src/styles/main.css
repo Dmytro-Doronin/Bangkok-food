@@ -78,7 +78,6 @@ html,
 }
 
 body {
-  min-height: 100%;
   line-height: 1.5;
 }
 
@@ -152,9 +151,6 @@ svg * {
 
 html {
   scroll-behavior: smooth;
-}
-html.is-lock {
-  overflow: hidden;
 }
 
 body {
@@ -713,7 +709,8 @@ h3, .h4 {
   line-height: 1.2;
   width: 100%;
 }
-.card__button {
+
+.add-button {
   background-color: var(--color-yellow);
   width: 4.5rem;
   flex: 1 0 4.5rem;
@@ -724,7 +721,7 @@ h3, .h4 {
   justify-content: center;
   cursor: pointer;
 }
-.card__button:hover, .card__button:active {
+.add-button:hover, .add-button:active {
   background-color: var(--color-yellow-dark);
 }
 
@@ -740,6 +737,7 @@ h3, .h4 {
   align-items: center;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 0.625rem;
+  margin-bottom: 1.25rem;
 }
 
 .modal {
@@ -835,6 +833,39 @@ h3, .h4 {
 }
 .error.fade-out {
   opacity: 0;
+}
+
+.product {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.product__img {
+  width: 18.75rem;
+  height: 18.75rem;
+}
+.product__title {
+  font-size: 2.75rem;
+}
+.product__info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 1.875rem;
+  row-gap: 0.9375rem;
+}
+
+.back-button {
+  background: none;
+  color: var(--color-yellow);
+  outline: none;
+  border: none;
+  align-self: flex-start;
+  transition: all 0.2s ease-in-out;
+}
+.back-button:hover {
+  color: var(--color-yellow-dark);
 }
 
 /*# sourceMappingURL=main.css.map */

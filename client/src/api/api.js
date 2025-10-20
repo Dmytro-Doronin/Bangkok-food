@@ -1,6 +1,6 @@
 const baseUrl = 'http://localhost:3002/api/products'
 
-export async function getRecommendations() {
+async function getRecommendations() {
     const res = await fetch(`${baseUrl}/recommendations`)
     if (!res.ok) {
         throw new Error(`Failed to load recommendations ${res.status}`)
@@ -8,7 +8,7 @@ export async function getRecommendations() {
     return res.json()
 }
 
-export async function getProducts(filters = {}) {
+async function getProducts(filters = {}) {
     const url = new URL(baseUrl)
 
     Object.entries(filters).forEach(([key, value]) => {
@@ -25,9 +25,8 @@ export async function getProducts(filters = {}) {
     return res.json()
 }
 
-export async function getProduct(productId) {
+async function getProduct(productId) {
     const res = await fetch(`${baseUrl}/${productId}`)
-
     if (!res.ok) {
         throw new Error(`Failed to load product ${productId} status ${res.status}`)
     }
@@ -35,4 +34,4 @@ export async function getProduct(productId) {
 
 }
 
-export const api = { getRecommendations, getProducts };
+export const api = { getRecommendations, getProducts, getProduct }

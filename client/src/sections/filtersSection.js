@@ -7,7 +7,7 @@ export const FiltersSection = () => {
 
     const label = document.createElement('label')
     label.className = 'label'
-    label.textContent = 'Max spiciness'
+    label.textContent = 'Spiciness'
     filterGroup.appendChild(label)
 
     const { stepSlider, sliderThumb, sliderValue, progress, value, steps } = StepSlider({ value: 0, steps: 5 })
