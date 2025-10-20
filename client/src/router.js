@@ -36,7 +36,7 @@ export function router() {
     }
 
     if (hash === ROUTES.cart) {
-        CartPage(root)
+        CartPage(root, cartElement)
         return
     }
 

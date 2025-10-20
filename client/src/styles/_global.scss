@@ -94,3 +94,10 @@ h3, .h4 {
   max-width: rem(1020);
   padding: 0 rem(10);
 }
+
+button {
+  box-shadow: none;
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
