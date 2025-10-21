@@ -25,14 +25,9 @@ export const categories = [
     },
     {
         id: 'vegetable-dishes',
-        name: 'Vegetable dishes'
-    },
+        name: 'Vegetable dishes' },
     {
-        id: 'bits-and-bites',
+        id: 'bits-bites',
         name: 'Bits and bites'
     },
-    {
-        id: 'on-the-side',
-        name: 'On the side'
-    }
 ]
