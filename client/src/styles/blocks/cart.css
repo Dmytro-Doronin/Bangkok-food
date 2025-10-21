@@ -7,7 +7,7 @@
   height: 3.9375rem;
   text-decoration: none;
   transition: all 0.5s ease;
-  z-index: 99999;
+  z-index: 999;
 }
 @media (width <= 47.99875rem) {
   .cart {
@@ -38,7 +38,10 @@
   flex-direction: column;
 }
 .cart__count {
-  font-size: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.625rem;
   line-height: 1.1;
   font-weight: 900;
   color: var(--color-pink);
