@@ -521,6 +521,11 @@ button {
   border-radius: 0.1875rem;
   cursor: pointer;
 }
+@media (width <= 30.06125rem) {
+  .slider {
+    width: 12.5rem;
+  }
+}
 .slider__progress {
   height: 0.5rem;
   border-radius: 0.1875rem;

@@ -9,7 +9,9 @@
   height: rem(8);
   border-radius: rem(3);
   cursor: pointer;
-
+  @include mobile-s {
+    width: rem(200);
+  }
   &__progress {
     height: rem(8);
     border-radius: rem(3);
