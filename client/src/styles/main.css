@@ -937,7 +937,7 @@ button {
 }
 .cart__wrapper {
   position: relative;
-  background: url("/client/public/icons/cart-icon.svg") center no-repeat;
+  background: url("/public/icons/cart-icon.svg") center no-repeat;
   background-size: cover;
   width: 100%;
   height: 100%;
