@@ -622,7 +622,7 @@ button {
   transition: background-color 0.2s, border-color 0.2s, opacity 0.2s;
 }
 .styled-checkbox:checked + label::before {
-  background-image: url("/client/public/icons/check-icon.svg");
+  background-image: url("/public/icons/check-icon.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 0.875rem 0.875rem;

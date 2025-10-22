@@ -32,7 +32,7 @@
   }
 
   &:checked + label::before {
-    background-image: url('/client/public/icons/check-icon.svg');
+    background-image: url('/public/icons/check-icon.svg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: rem(14) rem(14);
