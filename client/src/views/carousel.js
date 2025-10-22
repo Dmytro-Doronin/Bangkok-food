@@ -35,7 +35,7 @@ export const SlideView = (slide) => {
               <span class="carousel__price">€${slide.price.toFixed(2)}</span>
             <div class="carousel__title">${slide.title}</div>
               <button type="button" class="carousel__button">
-                <img src="/client/public/icons/plus-icon.svg" alt="icon">
+                <img src="./public/icons/plus-icon.svg" alt="icon">
               </button>
             </div>
         </div>

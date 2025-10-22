@@ -11,11 +11,11 @@ export const CartProduct = ({product}) => {
                     <div class="cart-product__price-wrap">
                         <div class="cart-counter">
                             <button type="button" class="cart-counter__button cart-counter__button_minus">
-                                <img src="/client/public/icons/square-minus-icon.svg" alt="minus">
+                                <img src="./public/icons/square-minus-icon.svg" alt="minus">
                             </button>
                             <span class="cart-counter__count">${product.quantity}</span>
                             <button type="button" class="cart-counter__button cart-counter__button_plus">
-                                <img src="/client/public/icons/square-plus-icon.svg" alt="plus">
+                                <img src="./public/icons/square-plus-icon.svg" alt="plus">
                             </button>
                         </div>
                         <div class="cart-product__price">€${(product.price * product.quantity).toFixed(2)}</div>

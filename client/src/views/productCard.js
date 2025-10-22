@@ -10,7 +10,7 @@ export const ProductCard = ({product}) => {
             <div class="card__body">
                 <div class="card__title">${product.title}</div>
                 <button type="button" class="add-button">
-                    <img src="/client/public/icons/plus-icon.svg" alt="icon">
+                    <img src="./public/icons/plus-icon.svg" alt="icon">
                 </button>
             </div>
         </div>

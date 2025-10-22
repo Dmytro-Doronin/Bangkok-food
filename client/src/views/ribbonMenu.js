@@ -5,7 +5,7 @@ export const RibbonMenu = () => {
     const ribbonMenu = createElement(`
         <div class="ribbon">
             <button class="ribbon__arrow ribbon__arrow_left">
-               <img src="/client/public/icons/angle-icon.svg" alt="icon">
+               <img src="./public/icons/angle-icon.svg" alt="icon">
             </button>
         
             <nav class="ribbon__inner">
@@ -13,7 +13,7 @@ export const RibbonMenu = () => {
             </nav>
         
             <button class="ribbon__arrow ribbon__arrow_right ribbon__arrow_visible">
-                <img src="/client/public/icons/angle-icon.svg" alt="icon">
+                <img src="./public/icons/angle-icon.svg" alt="icon">
             </button>
         </div>
     `)
