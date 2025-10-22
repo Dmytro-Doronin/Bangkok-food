@@ -6,10 +6,10 @@ export const CarouselView = (slides = []) => {
     const carousel = createElement(`
         <div class="carousel">
             <div class="carousel__arrow carousel__arrow_right">
-                <img src="/client/public/icons/angle-icon.svg" alt="icon">
+                <img src="./public/icons/angle-icon.svg" alt="icon">
             </div>
             <div class="carousel__arrow carousel__arrow_left">
-                <img src="/client/public/icons/angle-left-icon.svg" alt="icon">
+                <img src="./public/icons/angle-left-icon.svg" alt="icon">
             </div>
             <div class="carousel__inner">
                 ${innerHtml}
