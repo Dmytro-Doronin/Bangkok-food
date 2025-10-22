@@ -1,16 +1,8 @@
-import {app} from "./app";
-import {runDB} from "./db/db";
+import { app } from "./app";
+import { runDB } from "./db/db";
 
-const PORT = process.env.PORT || 3000;
-
-const startApp = async () => {
-    try {
-        await runDB()
-        app.listen(PORT, () => {
-            console.log(`Server listening on port ${PORT}`)
-        })
-    } catch (e) {
-        console.log(e)
-    }
+const ready = runDB();
+export default async function handler(req: any, res: any) {
+    await ready;
+    return app(req, res);
 }
-startApp()
