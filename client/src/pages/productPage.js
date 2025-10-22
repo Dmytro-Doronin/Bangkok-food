@@ -10,9 +10,8 @@ export const ProductPage = async ({host, cartElement,cardId}) => {
     updateCartElement(cartElement)
     const loader = Loader()
     async function fetchProduct() {
-        let modal
+        let modal = Modal(loader)
         try {
-            modal = Modal(loader)
             host.appendChild(modal)
             const product = await api.getProduct(cardId)
             const {productElement} = createProductSection({product, host})
@@ -21,9 +20,6 @@ export const ProductPage = async ({host, cartElement,cardId}) => {
                 updateCartElement(cartElement)
             })
         } catch (err) {
-            if (modal) {
-                modal.remove()
-            }
             errorController({message: err.message})
         } finally {
             if (modal) {

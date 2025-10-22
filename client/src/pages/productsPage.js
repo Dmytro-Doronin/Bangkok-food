@@ -10,6 +10,7 @@ import {errorController} from "../controllers/errorController.js"
 import {navigate, ROUTES} from "../router.js"
 import {updateCartElement} from "../utils/updateCart.js"
 import {addProductToCart} from "../utils/addProductToCart.js"
+import {ProductContainer} from "../views/productContainer.js"
 
 export const ProductsPage = async (host, cartElement) =>{
 
@@ -50,20 +51,17 @@ export const ProductsPage = async (host, cartElement) =>{
                 errorController({ message: products.reason.message || "Failed to load products" })
             }
 
-            if (modal) {
-                modal.remove()
-            }
-
             renderPage()
         } catch (err) {
+            errorController({message: err.message})
+        } finally {
             if (modal) {
                 modal.remove()
             }
-            errorController({message: err.message})
         }
     }
 
-
+    const {productsContainer} = ProductContainer()
     async function fetchProducts() {
         productsContainer.classList.add('loading')
         try {
@@ -81,7 +79,7 @@ export const ProductsPage = async (host, cartElement) =>{
         }
     }
 
-    let productsContainer
+
     function renderPage() {
 
         updateCartElement(cartElement)
@@ -119,9 +117,6 @@ export const ProductsPage = async (host, cartElement) =>{
             state.filters.spiciness = e.detail
             fetchProducts()
         })
-
-        productsContainer = document.createElement('div')
-        productsContainer.className = 'products-container'
         host.appendChild(productsContainer)
 
         renderProducts()

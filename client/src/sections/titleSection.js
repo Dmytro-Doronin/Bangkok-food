@@ -1,6 +1,6 @@
+import {createTitle} from "../views/title.js"
+
 export const createTitleSection = ({ title, host }) => {
-    const titleElement = document.createElement('h2')
-    titleElement.className = 'title p40'
-    titleElement.textContent = `${title}`
+    const {titleElement} = createTitle({title})
     host.appendChild(titleElement)
 }

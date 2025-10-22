@@ -1,8 +1,8 @@
 import {navigate, router} from './router.js'
 
 if (!location.hash) {
-    navigate('#/products');
+    navigate('#/products')
 } else {
-    router();
+    router()
 }
 

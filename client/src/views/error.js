@@ -1,4 +1,4 @@
-import createElement from "../lib/createElement.js";
+import createElement from "../lib/createElement.js"
 
 export const Error = ({message}) => {
     return createElement(`

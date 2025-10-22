@@ -45,9 +45,15 @@ export const carouselController = ({carousel, leftArrow, rightArrow, carouselInn
 
     carousel.addEventListener('click', (e) => {
         carouselWidth = getSlideWidth()
-        if (e.target.closest('.carousel__arrow_right')) nextSlide()
-        if (e.target.closest('.carousel__arrow_left')) prevSlide()
-        if (e.target.closest('.carousel__button')) onProductAdd(e)
+        if (e.target.closest('.carousel__arrow_right')) {
+            nextSlide()
+        }
+        if (e.target.closest('.carousel__arrow_left')) {
+            prevSlide()
+        }
+        if (e.target.closest('.carousel__button')) {
+            onProductAdd(e)
+        }
     })
 
 }

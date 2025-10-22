@@ -1,5 +1,5 @@
-import createElement from "../lib/createElement.js";
-import {getPercent} from "../utils/getPercent.js";
+import createElement from "../lib/createElement.js"
+import {getPercent} from "../utils/getPercent.js"
 
 export const StepSlider = ({value = 0, steps = 5}) => {
     const segments = steps - 1
