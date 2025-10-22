@@ -19,12 +19,9 @@ export function CartPage(host, cartElement) {
     const {cartList} = createCartListSection({products: cartValues, host})
 
     const { form } = createFormSection({
-        host,
         onSubmit: (data) => {
             const cart = getCart()
             const order = { ...data, items: Object.values(cart) }
-
-            alert("Order submitted!")
         },
     })
     updateCartElement(cartElement)
