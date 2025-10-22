@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:3002/api/products'
+const baseUrl = 'https://bangkok-food.vercel.app/api/products'
 
 async function getRecommendations() {
     const res = await fetch(`${baseUrl}/recommendations`)
